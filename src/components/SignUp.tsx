@@ -14,9 +14,9 @@ const SignUp = (props: Props) => {
         >
             <form action="#">
                 <h1>계정 생성하기</h1>
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Password" />
-                <button>회원가입</button>
+                <input type="email" data-testid="email-input" placeholder="Email" />
+                <input type="password" data-testid="password-input" placeholder="Password" />
+                <button data-testid="signup-button">회원가입</button>
             </form>
         </div>
     );
