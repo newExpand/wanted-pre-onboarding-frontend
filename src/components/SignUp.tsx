@@ -26,19 +26,19 @@ const SignUp = (props: Props) => {
     const isPasswordBlurError = !(passwordValid.trim().length === 0);
     const isDisabled = !isEmailError && !isPasswordError && isEmailBlurError && isPasswordBlurError;
 
-    console.log(isEmailError, isPasswordError, isEmailBlurError, isPasswordBlurError);
     return (
         <div
             className={`${classes.formContainer} ${classes.signUpContainer} ${
                 props.isActive && classes.active
             }`}
         >
-            <Form action="#">
+            <Form method="post">
                 <h1>계정 생성하기</h1>
                 <input
                     type="email"
                     data-testid="email-input"
                     placeholder="Email"
+                    name="email"
                     onChange={emailValidHandler}
                 />
                 {isEmailError && isEmailBlurError && <p>@가 포함되어 있지 않습니다.</p>}
@@ -46,6 +46,7 @@ const SignUp = (props: Props) => {
                     type="password"
                     data-testid="password-input"
                     placeholder="Password"
+                    name="password"
                     onChange={passwordValidHandler}
                 />
                 {isPasswordError && isPasswordBlurError && <p>비밀번호가 8글자 미만 입니다.</p>}

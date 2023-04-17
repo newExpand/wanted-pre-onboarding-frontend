@@ -1,6 +1,6 @@
 import React from "react";
 import { RouterProvider, createBrowserRouter, Navigate } from "react-router-dom";
-import Authentication from "./pages/Authentication";
+import Authentication, { action as authAction } from "./pages/Authentication";
 import RootPage from "./pages/RootPage";
 
 const router = createBrowserRouter([
@@ -11,10 +11,12 @@ const router = createBrowserRouter([
     {
         path: "signup",
         element: <Authentication />,
+        action: authAction,
     },
     {
         path: "signin",
         element: <Authentication />,
+        action: authAction,
     },
 ]);
 

@@ -38,6 +38,7 @@ const SignIn = (props: Props) => {
                     type="email"
                     data-testid="email-input"
                     placeholder="Email"
+                    name="email"
                     onChange={emailValidHandler}
                 />
                 {isEmailError && isEmailBlurError && <p>@가 포함되어 있지 않습니다.</p>}
@@ -45,10 +46,11 @@ const SignIn = (props: Props) => {
                     type="password"
                     data-testid="password-input"
                     placeholder="Password"
+                    name="password"
                     onChange={passwordValidHandler}
                 />
                 {isPasswordError && isPasswordBlurError && <p>비밀번호가 8글자 미만 입니다.</p>}
-                <button disabled={isDisabled} data-testid="signin-button">
+                <button disabled={!isDisabled} data-testid="signin-button">
                     로그인
                 </button>
             </Form>
