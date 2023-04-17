@@ -1,0 +1,103 @@
+.formContainer {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all 0.6s ease-in-out;
+}
+
+.formContainer form {
+    background: rgba(45, 52, 54, 1);
+    display: flex;
+    flex-direction: column;
+    padding: 0 5rem;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.formContainer input {
+    background: #eee;
+    border: none;
+    padding: 1.2rem 1.5rem;
+    margin: 0.8rem 0;
+    width: 100%;
+}
+
+.formContainer button {
+    border-radius: 20px;
+    border: 1px solid #ff4b2b;
+    background: #ff4b2b;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+}
+
+.formContainer input[type="text"] {
+    width: 24rem;
+    text-align: center;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #fff;
+    font-family: "PLay", sans-serif;
+    font-size: 16px;
+    font-weight: 200px;
+    padding: 10px 0;
+    transition: border 0.5s;
+    outline: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+.formContainer input[type="password"] {
+    width: 240px;
+    text-align: center;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #fff;
+    font-family: "PLay", sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 0;
+    transition: border 0.5s;
+    outline: none;
+    color: #fff;
+}
+
+.formContainer input[type="email"] {
+    width: 240px;
+    text-align: center;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #fff;
+    font-family: "PLay", sans-serif;
+    font-size: 16px;
+    font-weight: 200px;
+    padding: 10px 0;
+    transition: border 0.5s;
+    outline: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+.formContainer button:active {
+    transform: scale(0.95);
+}
+
+.formContainer button:focus {
+    outline: none;
+}
+
+.formContainer.signInContainer {
+    left: 0;
+    width: 50%;
+    z-index: 2;
+}
+
+.signInContainer.active {
+    transform: translateX(100%);
+}
