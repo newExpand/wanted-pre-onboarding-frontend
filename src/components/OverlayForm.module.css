@@ -51,7 +51,7 @@
     background-color: #ff4b2b;
 }
 
-.overlayContainer button {
+.overlayContainer a {
     border-radius: 20px;
     border: 1px solid #ff4b2b;
     background: #ff4b2b;
@@ -64,11 +64,11 @@
     transition: transform 80ms ease-in;
 }
 
-.overlayContainer button:active {
+.overlayContainer a:active {
     transform: scale(0.95);
 }
 
-.overlayContainer button:focus {
+.overlayContainer a:focus {
     outline: none;
 }
 

@@ -4,7 +4,7 @@ const RootPage = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        navigate("/signup");
+        navigate("/signin");
     }, [navigate]);
 
     return (

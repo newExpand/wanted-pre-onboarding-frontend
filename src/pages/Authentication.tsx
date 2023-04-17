@@ -9,13 +9,15 @@ const Authentication = () => {
 
     const onActiveHandler = () => {
         setIsActive("active");
+        localStorage.setItem("isSign", "true");
     };
 
     const offActiveHandler = () => {
         setIsActive("");
+        localStorage.setItem("isSign", "false");
     };
 
-    const booleanActive = isActive === "active";
+    const booleanActive = isActive === "active" || localStorage.getItem("isSign") === "true";
 
     return (
         <div className={classes.container}>
