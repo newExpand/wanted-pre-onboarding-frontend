@@ -6,13 +6,13 @@
 
 1. **회원가입과 로그인 기능 구현**
 
-⬜ /signup 경로에 회원가입 기능 구현<br>
-⬜ /signin 경로에 로그인 기능 구현<br>
-⬜ 이메일 input, 비밀번호 input, 제출 button 포함된 UI 구성<br>
-⬜ 이메일 input에 data-testid="email-input" 속성 부여<br>
-⬜ 패스워드 input에 data-testid="password-input" 속성 부여<br>
-⬜ 회원가입 페이지에는 회원가입 button에 data-testid="signup-button" 속성 부여<br>
-⬜ 로그인 페이지에는 로그인 button에 data-testid="signin-button" 속성 부여<br>
+✅ /signup 경로에 회원가입 기능 구현<br>
+✅ /signin 경로에 로그인 기능 구현<br>
+✅ 이메일 input, 비밀번호 input, 제출 button 포함된 UI 구성<br>
+✅ 이메일 input에 data-testid="email-input" 속성 부여<br>
+✅ 패스워드 input에 data-testid="password-input" 속성 부여<br>
+✅ 회원가입 페이지에는 회원가입 button에 data-testid="signup-button" 속성 부여<br>
+✅ 로그인 페이지에는 로그인 button에 data-testid="signin-button" 속성 부여<br>
 
 2. **이메일과 비밀번호의 유효성 검사 구현**
 
