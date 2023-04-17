@@ -2,6 +2,7 @@ import React from "react";
 import { RouterProvider, createBrowserRouter, Navigate } from "react-router-dom";
 import Authentication, { action as authAction } from "./pages/Authentication";
 import RootPage from "./pages/RootPage";
+import TodoPages from "./pages/TodoPages";
 
 const router = createBrowserRouter([
     {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
         path: "signin",
         element: <Authentication />,
         action: authAction,
+    },
+    {
+        path: "todo",
+        element: <TodoPages />,
     },
 ]);
 

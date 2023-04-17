@@ -35,7 +35,6 @@ export default Authentication;
 export const action = async ({ request }: { request: Request }) => {
     const curPathname = new URL(request.url).pathname;
 
-    console.log(curPathname);
     const data = await request.formData();
     const authData = {
         email: data.get("email"),
@@ -59,4 +58,5 @@ export const action = async ({ request }: { request: Request }) => {
     const token = resData.access_token;
 
     localStorage.setItem("token", token);
+    return redirect("/todo");
 };
