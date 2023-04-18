@@ -65,3 +65,16 @@
 .todoList button:hover {
     background-color: #ccc;
 }
+
+.todoList a {
+    padding: 0.5rem 1rem;
+    background-color: #ff4b2b;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    margin-left: 1rem;
+}
+
+.todoList a:hover {
+    background-color: #d03317;
+}

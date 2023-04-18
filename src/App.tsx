@@ -26,6 +26,11 @@ const router = createBrowserRouter([
         element: <TodoPages />,
         loader: checkLoader,
         action: todoAction,
+        children: [
+            {
+                path: ":id",
+            },
+        ],
     },
 ]);
 
