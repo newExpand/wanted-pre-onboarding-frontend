@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, json, useNavigate } from "react-router-dom";
+import { Link, json, useNavigate, Form, redirect } from "react-router-dom";
 import classes from "./TodoItem.module.css";
 import { getAuthToken } from "../util/auth";
 import axios from "axios";
@@ -13,27 +13,20 @@ interface TodoDataType {
 }
 
 const TodoItem = (props: TodoDataType) => {
-    // const localValue = JSON.parse(localStorage.getItem("checkboxIds") || "[]");
-    const token = getAuthToken();
-    const navigate = useNavigate();
-    const [deleted, setDeleted] = useState(false);
     const [isChecked, setIsChecked] = useState(false);
+    const [isShowPutMarkup, setIsShowPutMarkup] = useState(false);
 
-    const startDeleteHandler = async () => {
-        const response = await axios({
-            url: process.env.REACT_APP_TODO_API + `todos/${props.id}`,
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: "Bearer " + token,
-            },
-            method: "DELETE",
-        });
+    const putMarkupHandler = (e: React.MouseEvent) => {
+        const tartget = e.target as HTMLButtonElement;
 
-        if (response.status === 400 || response.status === 404)
-            throw json({ message: "요청에 실패하였습니다." }, { status: 400 });
-
-        setDeleted(true);
-        navigate("/todo");
+        switch (tartget.dataset.testid) {
+            case "cancel-button":
+                setIsShowPutMarkup(false);
+                break;
+            case "modify-button":
+                setIsShowPutMarkup(true);
+                break;
+        }
     };
 
     const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -46,28 +39,55 @@ const TodoItem = (props: TodoDataType) => {
         setIsChecked(checkboxIds.includes(props.id));
     }, [props.id]);
 
-    useEffect(() => {
-        setDeleted(false);
-    }, []);
-
-    if (deleted) return null;
-
     return (
         <>
             <li className={classes.todoList}>
                 <label>
                     <input type="checkbox" checked={isChecked} onChange={handleCheckboxChange} />
-                    <span>{props.todo}</span>
+                    {!isShowPutMarkup && <span>{props.todo}</span>}
                 </label>
-                <div className={classes.btnWrap}>
-                    <button data-testid="modify-button">수정</button>
-                    <Link to={`${props.id}`} data-testid="delete-button" onClick={startDeleteHandler}>
-                        삭제
-                    </Link>
-                </div>
+                {!isShowPutMarkup && (
+                    <Form method="delete" className={classes.btnWrap}>
+                        <button type="button" data-testid="modify-button" onClick={putMarkupHandler}>
+                            수정
+                        </button>
+                        <Link to={`${props.id}`} data-testid="delete-button">
+                            삭제
+                        </Link>
+                    </Form>
+                )}
+                {isShowPutMarkup && (
+                    <Form method="put" className={`${classes.btnWrap} ${classes.putStaus}`}>
+                        <input data-testid="modify-input" defaultValue={props.todo} />
+                        <div className={classes.btnWrap}>
+                            <button data-testid="submit-button">제출</button>
+                            <button type="button" data-testid="cancel-button" onClick={putMarkupHandler}>
+                                취소
+                            </button>
+                        </div>
+                    </Form>
+                )}
             </li>
         </>
     );
 };
 
 export default TodoItem;
+
+export const loader = async ({ params }: { request: Request; params: any }) => {
+    const curTodoId = params.todoId;
+    const token = getAuthToken();
+
+    const response = await axios({
+        url: process.env.REACT_APP_TODO_API + `todos/${curTodoId}`,
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + token,
+        },
+        method: "DELETE",
+    });
+    if (response.status === 400 || response.status === 404)
+        throw json({ message: "요청에 실패하였습니다." }, { status: 400 });
+
+    return redirect("/todo");
+};

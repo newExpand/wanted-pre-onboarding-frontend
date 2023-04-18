@@ -1,10 +1,11 @@
 import React from "react";
 import { RouterProvider, createBrowserRouter, Navigate } from "react-router-dom";
 import Authentication, { action as authAction } from "./pages/Authentication";
-import { action as todoAction } from "./components/TodoForm";
+import { action as todoAction } from "./pages/TodoPages";
 import RootPage from "./pages/RootPage";
 import TodoPages from "./pages/TodoPages";
 import { checkLoader } from "./util/auth";
+import { loader as todoDeleteLoader } from "./components/TodoItem";
 
 const router = createBrowserRouter([
     {
@@ -28,7 +29,9 @@ const router = createBrowserRouter([
         action: todoAction,
         children: [
             {
-                path: ":id",
+                path: ":todoId",
+                element: <TodoPages />,
+                loader: todoDeleteLoader,
             },
         ],
     },

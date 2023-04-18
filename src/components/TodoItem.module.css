@@ -75,6 +75,22 @@
     flex-shrink: 0;
 }
 
+.todoList .btnWrap.putStaus {
+    width: 100%;
+    max-width: 95%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.todoList input[data-testid="modify-input"] {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    border: 1px solid #ccc;
+    margin: 0 1rem;
+    outline: none;
+}
+
 .todoList button {
     padding: 0.5rem 1rem;
     background-color: #ddd;
@@ -82,6 +98,7 @@
     border-radius: 0.5rem;
     cursor: pointer;
     margin-left: 1rem;
+    text-shadow: 0.05rem 0.05rem 0.05rem rgba(0, 0, 0, 0.25);
 }
 
 .todoList button:hover {
@@ -90,7 +107,7 @@
 
 .todoList a {
     padding: 0.5rem 1rem;
-    background-color: #ff4b2b;
+    background-color: #ab3c28;
     border: none;
     border-radius: 0.5rem;
     cursor: pointer;

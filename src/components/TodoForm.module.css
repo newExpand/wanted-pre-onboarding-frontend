@@ -20,12 +20,12 @@
 }
 
 .todoForm button {
-    background-color: #4caf50;
+    background-color: #146116;
     color: #fff;
     border: none;
     padding: 0.6rem 0.8rem;
     border-radius: 0.25rem;
-    font-size: 1rem;
+    font-size: 1.25rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
