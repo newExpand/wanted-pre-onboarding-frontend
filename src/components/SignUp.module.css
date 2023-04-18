@@ -25,14 +25,14 @@
 }
 
 .formContainer button {
-    border-radius: 20px;
+    border-radius: 2rem;
     border: 1px solid #ff4b2b;
     background: #ff4b2b;
     color: #fff;
-    font-size: 12px;
+    font-size: 1.2rem;
     font-weight: bold;
-    padding: 12px 45px;
-    letter-spacing: 1px;
+    padding: 1.2rem 4.5rem;
+    letter-spacing: 0.1rem;
     text-transform: uppercase;
     transition: transform 80ms ease-in;
 }
@@ -44,9 +44,9 @@
     border: none;
     border-bottom: 1px solid #fff;
     font-family: "PLay", sans-serif;
-    font-size: 16px;
-    font-weight: 200px;
-    padding: 10px 0;
+    font-size: 1.6rem;
+    font-weight: 20rem;
+    padding: 1rem 0;
     transition: border 0.5s;
     outline: none;
     color: #fff;
@@ -54,30 +54,30 @@
 }
 
 .formContainer input[type="password"] {
-    width: 240px;
+    width: 24rem;
     text-align: center;
     background: transparent;
     border: none;
     border-bottom: 1px solid #fff;
     font-family: "PLay", sans-serif;
-    font-size: 16px;
+    font-size: 1.6rem;
     font-weight: bold;
-    padding: 10px 0;
+    padding: 1rem 0;
     transition: border 0.5s;
     outline: none;
     color: #fff;
 }
 
 .formContainer input[type="email"] {
-    width: 240px;
+    width: 24rem;
     text-align: center;
     background: transparent;
     border: none;
     border-bottom: 1px solid #fff;
     font-family: "PLay", sans-serif;
-    font-size: 16px;
-    font-weight: 200px;
-    padding: 10px 0;
+    font-size: 1.6rem;
+    font-weight: 200;
+    padding: 1rem 0;
     transition: border 0.5s;
     outline: none;
     color: #fff;
