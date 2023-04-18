@@ -47,14 +47,14 @@ const TodoItem = (props: TodoDataType) => {
                     {!isShowPutMarkup && <span>{props.todo}</span>}
                 </label>
                 {!isShowPutMarkup && (
-                    <Form method="delete" className={classes.btnWrap}>
+                    <div className={classes.btnWrap}>
                         <button type="button" data-testid="modify-button" onClick={putMarkupHandler}>
                             수정
                         </button>
                         <Link to={`${props.id}`} data-testid="delete-button">
                             삭제
                         </Link>
-                    </Form>
+                    </div>
                 )}
                 {isShowPutMarkup && (
                     <Form method="put" className={`${classes.btnWrap} ${classes.putStaus}`}>
