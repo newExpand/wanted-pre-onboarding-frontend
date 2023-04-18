@@ -9,12 +9,15 @@ interface TodoDataType {
     todo: string;
     isCompleted: boolean;
     userId: number;
+    onCheckbox: (changeId: number) => (e: React.ChangeEvent) => void;
 }
 
 const TodoItem = (props: TodoDataType) => {
+    // const localValue = JSON.parse(localStorage.getItem("checkboxIds") || "[]");
     const token = getAuthToken();
     const navigate = useNavigate();
     const [deleted, setDeleted] = useState(false);
+    const [isChecked, setIsChecked] = useState(false);
 
     const startDeleteHandler = async () => {
         const response = await axios({
@@ -33,6 +36,16 @@ const TodoItem = (props: TodoDataType) => {
         navigate("/todo");
     };
 
+    const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setIsChecked(e.target.checked);
+        props.onCheckbox(props.id)(e);
+    };
+
+    useEffect(() => {
+        const checkboxIds = JSON.parse(localStorage.getItem("checkboxIds") || "[]");
+        setIsChecked(checkboxIds.includes(props.id));
+    }, [props.id]);
+
     useEffect(() => {
         setDeleted(false);
     }, []);
@@ -43,7 +56,7 @@ const TodoItem = (props: TodoDataType) => {
         <>
             <li className={classes.todoList}>
                 <label>
-                    <input type="checkbox" />
+                    <input type="checkbox" checked={isChecked} onChange={handleCheckboxChange} />
                     <span>{props.todo}</span>
                 </label>
                 <div className={classes.btnWrap}>

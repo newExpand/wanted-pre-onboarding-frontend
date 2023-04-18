@@ -22,6 +22,7 @@
     background-color: #fff;
     border: 2px solid #ccc;
     border-radius: 50%;
+    outline: none;
 }
 
 .todoList label input[type="checkbox"]:checked {
