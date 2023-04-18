@@ -3,6 +3,7 @@
     top: 50%;
     left: 50%;
     max-width: 95%;
+    min-width: 28rem;
     min-height: 48rem;
     width: 76.8rem;
     height: 48rem;

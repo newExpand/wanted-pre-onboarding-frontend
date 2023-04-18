@@ -7,9 +7,9 @@ const TodoItem = () => {
             <li className={classes.todoList}>
                 <label>
                     <input type="checkbox" />
-                    <span>TODO 1</span>
+                    <span>asdfasdf sadfasdfasdf</span>
                 </label>
-                <div>
+                <div className={classes.btnWrap}>
                     <button data-testid="modify-button">수정</button>
                     <button data-testid="delete-button">삭제</button>
                 </div>
