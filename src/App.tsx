@@ -3,6 +3,7 @@ import { RouterProvider, createBrowserRouter, Navigate } from "react-router-dom"
 import Authentication, { action as authAction } from "./pages/Authentication";
 import RootPage from "./pages/RootPage";
 import TodoPages from "./pages/TodoPages";
+import { checkAuthLoader } from "./util/auth";
 
 const router = createBrowserRouter([
     {
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
     {
         path: "todo",
         element: <TodoPages />,
+        loader: checkAuthLoader,
     },
 ]);
 
