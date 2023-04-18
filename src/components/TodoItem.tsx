@@ -1,13 +1,20 @@
 import React from "react";
 import classes from "./TodoItem.module.css";
 
-const TodoItem = () => {
+interface TodoDataType {
+    id: number;
+    todo: string;
+    isCompleted: boolean;
+    userId: number;
+}
+
+const TodoItem = (props: TodoDataType) => {
     return (
         <>
             <li className={classes.todoList}>
                 <label>
                     <input type="checkbox" />
-                    <span>asdfasdf sadfasdfasdf</span>
+                    <span>{props.todo}</span>
                 </label>
                 <div className={classes.btnWrap}>
                     <button data-testid="modify-button">수정</button>

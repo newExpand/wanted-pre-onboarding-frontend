@@ -1,4 +1,5 @@
 import { redirect } from "react-router-dom";
+import { getTodo } from "./getTodo";
 
 export const getAuthToken = () => {
     const token = localStorage.getItem("token");
@@ -8,10 +9,10 @@ export const getAuthToken = () => {
     return token;
 };
 
-export const checkAuthLoader = () => {
+export const checkLoader = () => {
     const token = getAuthToken();
 
     if (!token) return redirect("/signin");
 
-    return token;
+    return getTodo(token);
 };

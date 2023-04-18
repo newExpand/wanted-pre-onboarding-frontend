@@ -47,7 +47,8 @@ export const action = async ({ request }: { request: Request }) => {
         data: authData,
     });
 
-    if (response.status === 400) throw json({ message: "요청에 실패하였습니다." }, { status: 400 });
+    if (response.status === 400 || response.status === 404)
+        throw json({ message: "요청에 실패하였습니다." }, { status: 400 });
 
     if (curPathname === "/signup") {
         localStorage.setItem("isSign", "false");
