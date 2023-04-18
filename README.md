@@ -40,15 +40,15 @@
 6. **투두 리스트 구현**
 
 ✅ /todo 경로에 접속하면 투두 리스트의 목록을 볼 수 있어야 함.<br>
-⬜ 목록에서는 TODO의 내용과 완료 여부가 표시되어야 함.<br>
-⬜ TODO의 완료 여부는 체크박스를 통해 표현해야 함.<br>
+✅ 목록에서는 TODO의 내용과 완료 여부가 표시되어야 함.<br>
+✅ TODO의 완료 여부는 체크박스를 통해 표현해야 함.<br>
 ✅ TODO는 li 태그를 이용해서 감싸야 함.<br>
 ✅ 새로운 TODO를 입력할 수 있는 input과 추가 button을 만들어야 함.<br>
 ✅ TODO 입력 input에는 data-testid="new-todo-input" 속성을 부여해야 함.<br>
 ✅ TODO 추가 button에는 data-testid="new-todo-add-button" 속성을 부여해야 함.<br>
 ✅ 추가 button을 클릭하면 입력 input의 내용이 새로운 TODO로 추가되어야 함.<br>
 ✅ TODO를 추가한 뒤 새로고침을 해도 추가한 TODO가 목록에 보여야 함.<br>
-⬜ TODO의 체크박스를 통해 완료 여부를 수정할 수 있어야 함.<br>
+✅ TODO의 체크박스를 통해 완료 여부를 수정할 수 있어야 함.<br>
 ✅ TODO 우측에 수정버튼과 삭제 버튼을 만들어야 함.<br>
 ✅ 수정 버튼에는 data-testid="modify-button" 속성을 부여해야 함.<br>
 ✅ 삭제 버튼에는 data-testid="delete-button" 속성을 부여해야 함.<br>
