@@ -1,7 +1,8 @@
 import React from "react";
+import Main from "../components/Main";
 
 const TodoPages = () => {
-    return <div className="container blackBg">TodoPages</div>;
+    return <Main className="blackBg"></Main>;
 };
 
 export default TodoPages;

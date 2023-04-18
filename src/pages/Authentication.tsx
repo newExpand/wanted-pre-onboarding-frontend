@@ -3,8 +3,8 @@ import { json, redirect } from "react-router-dom";
 import OverlayForm from "../components/OverlayForm";
 import SignIn from "../components/SignIn";
 import SignUp from "../components/SignUp";
-import classes from "./Authentication.module.css";
 import axios from "axios";
+import Main from "../components/Main";
 
 const Authentication = () => {
     const [isActive, setIsActive] = useState("");
@@ -22,11 +22,11 @@ const Authentication = () => {
     const booleanActive = isActive === "active" || localStorage.getItem("isSign") === "true";
 
     return (
-        <div className="container">
+        <Main>
             <SignIn isActive={booleanActive} />
             <SignUp isActive={booleanActive} />
             <OverlayForm onActive={onActiveHandler} offActive={offActiveHandler} isActive={booleanActive} />
-        </div>
+        </Main>
     );
 };
 

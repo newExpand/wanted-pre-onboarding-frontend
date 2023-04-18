@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const RootPage = () => {
     const navigate = useNavigate();
 
@@ -7,13 +7,7 @@ const RootPage = () => {
         navigate("/signin");
     }, [navigate]);
 
-    return (
-        <>
-            <main>
-                <Outlet />
-            </main>
-        </>
-    );
+    return <></>;
 };
 
 export default RootPage;
