@@ -22,7 +22,7 @@ const Authentication = () => {
     const booleanActive = isActive === "active" || localStorage.getItem("isSign") === "true";
 
     return (
-        <div className={classes.container}>
+        <div className="container">
             <SignIn isActive={booleanActive} />
             <SignUp isActive={booleanActive} />
             <OverlayForm onActive={onActiveHandler} offActive={offActiveHandler} isActive={booleanActive} />
