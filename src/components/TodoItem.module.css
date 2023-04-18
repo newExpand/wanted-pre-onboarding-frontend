@@ -1,0 +1,39 @@
+.todoList {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 1rem auto;
+    padding: 1rem;
+    border-bottom: 1px solid #ccc;
+}
+
+.todoList:first-of-type {
+    margin-top: 3rem;
+}
+
+/* .todoList:last-of-type {
+    border: none;
+} */
+
+.todoList label {
+    display: flex;
+    align-items: center;
+}
+
+.todoList label span {
+    margin-left: 1rem;
+}
+
+.todoList button {
+    padding: 0.5rem 1rem;
+    background-color: #ddd;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    margin-left: 1rem;
+}
+
+.todoList button:hover {
+    background-color: #ccc;
+}

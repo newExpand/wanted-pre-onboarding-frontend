@@ -5,11 +5,32 @@
     max-width: 95%;
     min-height: 48rem;
     width: 76.8rem;
+    height: 48rem;
     overflow: auto;
     border-radius: 10px;
     box-shadow: 0 1.4rem 2.8rem rgba(0, 0, 0, 0.25), 0 1rem 1rem rgba(0, 0, 0, 0.22);
     transform: translate(-50%, -50%);
     opacity: 0.8;
+}
+
+.container::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 0.7rem;
+}
+
+.container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 1rem;
+}
+
+.container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 1rem;
+}
+
+.container::-webkit-scrollbar-thumb:hover,
+.container::-webkit-scrollbar-thumb:active {
+    background: #555;
 }
 
 .container.blackBg {
