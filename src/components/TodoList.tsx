@@ -1,9 +1,10 @@
 import React from "react";
 import TodoItem from "./TodoItem";
+import classes from "./TodoList.module.css";
 
 const TodoList = () => {
     return (
-        <div>
+        <div className={classes.todoListWarp}>
             <ul>
                 <TodoItem />
             </ul>

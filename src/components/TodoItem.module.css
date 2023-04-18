@@ -8,10 +8,6 @@
     border-bottom: 1px solid #ccc;
 }
 
-.todoList:first-of-type {
-    margin-top: 3rem;
-}
-
 .todoList label {
     display: flex;
     align-items: center;
@@ -26,6 +22,12 @@
     background-color: #fff;
     border: 2px solid #ccc;
     border-radius: 50%;
+}
+
+.todoList label input[type="checkbox"]:checked {
+    background-color: #337ab7;
+    border-color: #337ab7;
+    transition: all 0.3s ease;
 }
 
 .todoList label input[type="checkbox"]:checked::before {
