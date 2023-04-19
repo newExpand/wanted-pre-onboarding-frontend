@@ -7,19 +7,15 @@ import axios from "axios";
 import Main from "../components/Main";
 
 const Authentication = () => {
-    const [isActive, setIsActive] = useState("");
-
     const onActiveHandler = () => {
-        setIsActive("active");
         localStorage.setItem("isSign", "true");
     };
 
     const offActiveHandler = () => {
-        setIsActive("");
         localStorage.setItem("isSign", "false");
     };
 
-    const booleanActive = isActive === "active" || localStorage.getItem("isSign") === "true";
+    const booleanActive = localStorage.getItem("isSign") === "true";
 
     return (
         <Main>
@@ -57,7 +53,8 @@ export const action = async ({ request }: { request: Request }) => {
 
         localStorage.setItem("token", token);
         return redirect("/todo");
-    } catch (err) {
-        return redirect("/error");
+    } catch (err: any) {
+        alert(err.response.data.message);
+        return redirect("/");
     }
 };
