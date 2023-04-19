@@ -1,10 +1,20 @@
+
+<p align="center"><img src="https://user-images.githubusercontent.com/120312998/233079465-32760ff4-468b-4fb0-b0f0-9c3c8e89d4ff.png" width="750" height="500"/></p>
+
 # 원티드 프리온보딩(프론트엔드) - 선발 과제
 
 원티드 프리온보딩 4월 프론트엔드 인턴십 사전과제 입니다.
 
-## 개발 요건 및 유의사항 정리
+## :tw-1f50c: 프로젝트의 실행 방법
 
-1. **회원가입과 로그인 기능 구현**
+git clone 후, `npm install & npm  start` 명령어 입력<br>
+**배포링크 :** https://app.netlify.com/sites/papaya-tanuki-0809f8/overview
+
+
+<br>
+##  :tw-1f4dd: 개발 요건 및 유의사항 정리
+
+### :tw-1f4cc: **회원가입과 로그인 기능 구현**
 
 ✅ /signup 경로에 회원가입 기능 구현<br>
 ✅ /signin 경로에 로그인 기능 구현<br>
@@ -12,32 +22,32 @@
 ✅ 이메일 input에 data-testid="email-input" 속성 부여<br>
 ✅ 패스워드 input에 data-testid="password-input" 속성 부여<br>
 ✅ 회원가입 페이지에는 회원가입 button에 data-testid="signup-button" 속성 부여<br>
-✅ 로그인 페이지에는 로그인 button에 data-testid="signin-button" 속성 부여<br>
+✅ 로그인 페이지에는 로그인 button에 data-testid="signin-button" 속성 부여<br><br>
 
-2. **이메일과 비밀번호의 유효성 검사 구현**
+### :tw-1f4cc: **이메일과 비밀번호의 유효성 검사 구현**
 
 ✅ 이메일 조건: @ 포함<br>
 ✅ 비밀번호 조건: 8자 이상<br>
 ✅ 유효성 검사 통과하지 못하면 button에 disabled 속성 부여<br>
-✅ 실제 사용하는 계정 대신 테스트용 이메일, 패스워드 사용 권장<br>
+✅ 실제 사용하는 계정 대신 테스트용 이메일, 패스워드 사용 권장<br><br>
 
-3. **회원가입 완료 후 리다이렉트 처리**
+### :tw-1f4cc: **회원가입 완료 후 리다이렉트 처리**
 
 ✅ 회원가입 버튼 클릭 시 회원가입 진행<br>
-✅ 회원가입이 정상적으로 완료되면 /signin 경로로 이동<br>
+✅ 회원가입이 정상적으로 완료되면 /signin 경로로 이동<br><br>
 
-4. **정상적인 로그인 시 JWT 저장 및 리다이렉트 처리**
+### :tw-1f4cc: **정상적인 로그인 시 JWT 저장 및 리다이렉트 처리**
 
 ✅ 로그인 API의 응답에 JWT가 포함되어 있음<br>
 ✅ 응답받은 JWT는 로컬 스토리지에 저장<br>
-✅ 정상적인 로그인 시 /todo 경로로 이동<br>
+✅ 정상적인 로그인 시 /todo 경로로 이동<br><br>
 
-5. **로그인 여부에 따른 리다이렉트 처리**
+### :tw-1f4cc: **로그인 여부에 따른 리다이렉트 처리**
 
 ✅ 로컬 스토리지에 토큰이 있을 때 /signin 또는 /signup 페이지에 접속하면 /todo 경로로 리다이렉트<br>
-✅ 로컬 스토리지에 토큰이 없을 때 /todo 페이지에 접속하면 /signin 경로로 리다이렉트<br>
+✅ 로컬 스토리지에 토큰이 없을 때 /todo 페이지에 접속하면 /signin 경로로 리다이렉트<br><br>
 
-6. **투두 리스트 구현**
+### :tw-1f4cc: **투두 리스트 구현**
 
 ✅ /todo 경로에 접속하면 투두 리스트의 목록을 볼 수 있어야 함.<br>
 ✅ 목록에서는 TODO의 내용과 완료 여부가 표시되어야 함.<br>
