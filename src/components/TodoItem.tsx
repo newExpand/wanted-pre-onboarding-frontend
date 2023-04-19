@@ -31,23 +31,25 @@ const TodoItem = (props: TodoDataType) => {
             todo: inputValue,
             isCompleted: true,
         };
-        const response = await axios({
-            url: process.env.REACT_APP_TODO_API + `todos/${props.id}`,
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: "Bearer " + token,
-            },
-            method: type,
-            data: todoData,
-        });
 
-        if (response.status === 400 || response.status === 404)
-            throw json({ message: "요청에 실패하였습니다." }, { status: 400 });
+        try {
+            const response = await axios({
+                url: process.env.REACT_APP_TODO_API + `todos/${props.id}`,
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + token,
+                },
+                method: type,
+                data: todoData,
+            });
 
-        const updatedTodo = response.data;
-        props.onUpdate(props.id, updatedTodo);
-        setIsShowPutMarkup(false);
-        navigate("/todo");
+            const updatedTodo = response.data;
+            props.onUpdate(props.id, updatedTodo);
+            setIsShowPutMarkup(false);
+            navigate("/todo");
+        } catch (err) {
+            return navigate("/error");
+        }
     };
 
     const putMarkupHandler = (e: React.MouseEvent) => {

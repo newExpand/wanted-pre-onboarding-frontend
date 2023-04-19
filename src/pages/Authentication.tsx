@@ -40,24 +40,26 @@ export const action = async ({ request }: { request: Request }) => {
         email: data.get("email"),
         password: data.get("password"),
     };
-    const response = await axios({
-        url: process.env.REACT_APP_TODO_API + "auth" + curPathname,
-        headers: { "Content-Type": "application/json" },
-        method: request.method,
-        data: authData,
-    });
 
-    if (response.status === 400 || response.status === 404)
-        throw json({ message: "요청에 실패하였습니다." }, { status: 400 });
+    try {
+        const response = await axios({
+            url: process.env.REACT_APP_TODO_API + "auth" + curPathname,
+            headers: { "Content-Type": "application/json" },
+            method: request.method,
+            data: authData,
+        });
 
-    if (curPathname === "/signup") {
-        localStorage.setItem("isSign", "false");
-        return redirect("/signin");
+        if (curPathname === "/signup") {
+            localStorage.setItem("isSign", "false");
+            return redirect("/signin");
+        }
+
+        const resData = await response.data;
+        const token = resData.access_token;
+
+        localStorage.setItem("token", token);
+        return redirect("/todo");
+    } catch (err) {
+        return redirect("/error");
     }
-
-    const resData = await response.data;
-    const token = resData.access_token;
-
-    localStorage.setItem("token", token);
-    return redirect("/todo");
 };

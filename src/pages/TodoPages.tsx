@@ -24,7 +24,7 @@ export const action = async ({ request, params }: { request: Request; params: an
         todo: data.get("todo"),
     };
 
-    if (request.method === "POST") {
+    try {
         const response = await axios({
             url: process.env.REACT_APP_TODO_API + "todos",
             headers: {
@@ -34,9 +34,9 @@ export const action = async ({ request, params }: { request: Request; params: an
             method: request.method,
             data: todoData,
         });
-        if (response.status === 400 || response.status === 404)
-            throw json({ message: "요청에 실패하였습니다." }, { status: 400 });
 
         return redirect("/todo");
+    } catch (err) {
+        return redirect("/error");
     }
 };
