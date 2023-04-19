@@ -1,0 +1,93 @@
+.errorPage {
+    position: relative;
+    background: url(https://i.ibb.co/sv6wRvq/wildwest-bg.jpg);
+    background-size: cover;
+    background-position: bottom;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+img.errorPageTembleweed {
+    animation: templeWeed 5s infinite 1s;
+}
+
+.errorPageTempleweedContainer {
+    position: absolute;
+    bottom: 20px;
+    width: 10vw;
+    transform: translateX(-100%);
+    animation: moveWeed 3s infinite linear;
+}
+
+.errorPageText {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: -5%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.errorPageButton {
+    display: block;
+    cursor: pointer;
+    border: 1px solid #fff;
+    color: #e3594e;
+    padding: 10px 30px;
+    letter-spacing: 0.2em;
+    box-shadow: 7px 7px 20px #00000026;
+    background: #fff;
+    transition: transform 300ms ease;
+}
+
+.errorPageButton:active {
+    transform: translateY(2px);
+    box-shadow: 3px 3px 20px #00000026;
+}
+
+.errorPageText h3 {
+    font-size: 20vw;
+    line-height: 1;
+    margin: 0;
+    letter-spacing: 0.2em;
+    margin-bottom: 50px;
+    color: #fff;
+    text-shadow: 7px 7px 20px #00000026;
+}
+
+@keyframes moveWeed {
+    0% {
+        left: 0;
+        transform: translateX(-100%) rotate(0);
+    }
+
+    100% {
+        left: 130%;
+        transform: translateX(100%) rotate(540deg);
+    }
+}
+
+@keyframes templeWeed {
+    0% {
+        transform: translateY(0);
+    }
+
+    30% {
+        transform: translateY(-3vw);
+    }
+
+    60% {
+        transform: translateY(-4vw);
+    }
+
+    90% {
+        transform: translateY(0);
+    }
+
+    90% {
+        transform: translateY(0);
+    }
+}

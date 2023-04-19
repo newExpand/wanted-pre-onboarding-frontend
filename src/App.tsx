@@ -6,11 +6,13 @@ import RootPage from "./pages/RootPage";
 import TodoPages from "./pages/TodoPages";
 import { checkLoader } from "./util/auth";
 import { action as logoutAction } from "./pages/Logout";
+import Error from "./pages/Error";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <RootPage />,
+        errorElement: <Error />,
     },
     {
         path: "signup",
