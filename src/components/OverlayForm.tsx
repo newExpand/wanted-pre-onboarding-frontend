@@ -40,11 +40,3 @@ const OverlayForm = (props: ActiveProps) => {
 };
 
 export default OverlayForm;
-
-// {
-//     /* // <Form method="post">
-// //     <input data-testid="email-input" />
-// //     <input data-testid="password-input" />
-// //     <button data-testid="signup-button">회원가입</button>
-// // </Form> */
-// }
