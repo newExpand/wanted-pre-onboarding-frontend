@@ -108,7 +108,7 @@
 
 .todoList button[data-testid="delete-button"] {
     padding: 0.5rem 1rem;
-    background-color: #ab3c28;
+    background-color: #781909;
     border: none;
     border-radius: 0.5rem;
     cursor: pointer;
