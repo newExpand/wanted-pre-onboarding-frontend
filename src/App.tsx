@@ -5,6 +5,7 @@ import { action as todoAction } from "./pages/TodoPages";
 import RootPage from "./pages/RootPage";
 import TodoPages from "./pages/TodoPages";
 import { checkLoader } from "./util/auth";
+import { action as logoutAction } from "./pages/Logout";
 
 const router = createBrowserRouter([
     {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
                 path: ":todoId",
             },
         ],
+    },
+    {
+        path: "logout",
+        action: logoutAction,
     },
 ]);
 

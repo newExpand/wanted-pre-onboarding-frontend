@@ -33,3 +33,18 @@
 .todoForm button:hover {
     background-color: #3e8e41;
 }
+
+.logoutForm {
+    position: absolute;
+    top: 1.85rem;
+    right: 1.85rem;
+}
+
+.logoutForm button {
+    display: inline-block;
+    padding: 0.4rem 0.5rem;
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+    background-color: #212032;
+    color: #fff;
+}

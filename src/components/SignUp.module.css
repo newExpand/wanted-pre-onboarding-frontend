@@ -92,6 +92,10 @@
     outline: none;
 }
 
+.formContainer button:disabled {
+    background-color: #471911;
+}
+
 .formContainer.signUpContainer {
     left: 0;
     width: 50%;
@@ -99,8 +103,33 @@
     opacity: 0;
 }
 
+.formContainer p {
+    user-select: none;
+}
+
 .signUpContainer.active {
     transform: translateX(100%);
     opacity: 1;
     z-index: 5;
+}
+
+@media (max-width: 560px) {
+    .formContainer input[type="email"] {
+        width: 20rem;
+        font-size: 1.4rem;
+    }
+
+    .formContainer input[type="password"] {
+        width: 20rem;
+        font-size: 1.4rem;
+    }
+
+    .formContainer h1 {
+        font-size: 2.2rem;
+        white-space: nowrap;
+    }
+
+    .formContainer button {
+        white-space: nowrap;
+    }
 }

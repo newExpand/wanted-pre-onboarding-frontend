@@ -87,3 +87,18 @@
 .overlayContainer .overlayRight.active {
     transform: translateX(20%);
 }
+
+.overlayContainer h1 {
+    word-break: keep-all;
+}
+
+.overlayContainer p {
+    word-break: keep-all;
+}
+
+@media (max-width: 560px) {
+    .overlayContainer h1 {
+        font-size: 2.2rem;
+        white-space: nowrap;
+    }
+}

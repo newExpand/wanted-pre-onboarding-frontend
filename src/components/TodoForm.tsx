@@ -17,6 +17,9 @@ const TodoForm = () => {
     return (
         <>
             <h1 className={classes.todoTitle}>Todo List</h1>
+            <Form className={classes.logoutForm} action="/logout" method="post">
+                <button>로그아웃</button>
+            </Form>
             <Form onSubmit={submitHandler} method="post" className={classes.todoForm}>
                 <input
                     data-testid="new-todo-input"
