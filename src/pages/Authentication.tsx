@@ -33,15 +33,13 @@ const Authentication = () => {
 export default Authentication;
 
 export const action = async ({ request }: { request: Request }) => {
-    const curPathname = new URL(request.url).pathname;
-
-    const data = await request.formData();
-    const authData = {
-        email: data.get("email"),
-        password: data.get("password"),
-    };
-
     try {
+        const curPathname = new URL(request.url).pathname;
+        const data = await request.formData();
+        const authData = {
+            email: data.get("email"),
+            password: data.get("password"),
+        };
         const response = await axios({
             url: process.env.REACT_APP_TODO_API + "auth" + curPathname,
             headers: { "Content-Type": "application/json" },
