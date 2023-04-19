@@ -10,6 +10,7 @@ interface TodoDataType {
     isCompleted: boolean;
     userId: number;
     onCheckbox: (changeId: number) => (e: React.ChangeEvent) => void;
+    onUpdate: (id: number, updateTodo: TodoDataType) => void;
 }
 
 const TodoItem = (props: TodoDataType) => {
@@ -18,8 +19,18 @@ const TodoItem = (props: TodoDataType) => {
     const [deleted, setDeleted] = useState(false);
     const [isChecked, setIsChecked] = useState(false);
     const [isShowPutMarkup, setIsShowPutMarkup] = useState(false);
+    const [inputValue, setInputValue] = useState(`${props.todo}`);
+
+    const inputChangeHandler = (e: React.ChangeEvent) => {
+        const target = e.target as HTMLInputElement;
+        setInputValue(target.value);
+    };
 
     const putDeleteHandler = async (type: string) => {
+        const todoData = {
+            todo: inputValue,
+            isCompleted: true,
+        };
         const response = await axios({
             url: process.env.REACT_APP_TODO_API + `todos/${props.id}`,
             headers: {
@@ -27,13 +38,16 @@ const TodoItem = (props: TodoDataType) => {
                 Authorization: "Bearer " + token,
             },
             method: type,
+            data: todoData,
         });
 
         if (response.status === 400 || response.status === 404)
             throw json({ message: "요청에 실패하였습니다." }, { status: 400 });
 
-        setDeleted(true);
-        return redirect("/todo");
+        const updatedTodo = response.data;
+        props.onUpdate(props.id, updatedTodo);
+        setIsShowPutMarkup(false);
+        navigate("/todo");
     };
 
     const putMarkupHandler = (e: React.MouseEvent) => {
@@ -85,7 +99,12 @@ const TodoItem = (props: TodoDataType) => {
                 )}
                 {isShowPutMarkup && (
                     <div className={`${classes.btnWrap} ${classes.putStaus}`}>
-                        <input data-testid="modify-input" name="putInput" defaultValue={props.todo} />
+                        <input
+                            data-testid="modify-input"
+                            name="putInput"
+                            defaultValue={props.todo}
+                            onChange={inputChangeHandler}
+                        />
                         <div className={classes.btnWrap}>
                             <button data-testid="submit-button" onClick={putDeleteHandler.bind(null, "PUT")}>
                                 제출

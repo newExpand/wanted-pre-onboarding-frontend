@@ -16,6 +16,7 @@ const TodoList = () => {
         const parseIds: number[] = JSON.parse(localStorage.getItem("checkboxIds") || "[]");
         return parseIds;
     });
+    const [todos, setTodos] = useState<any[]>([]);
 
     useEffect(() => {
         localStorage.setItem("checkboxIds", JSON.stringify(idsArr));
@@ -31,6 +32,21 @@ const TodoList = () => {
         }
     };
 
+    const handleUpdate = (id: number, updatedTodo: TodoDataType) => {
+        setTodos((prevTodos) =>
+            prevTodos.map((todo) => {
+                if (todo.id === id) {
+                    return {
+                        ...todo,
+                        todo: updatedTodo.todo,
+                        isCompleted: updatedTodo.isCompleted,
+                    };
+                }
+                return todo;
+            })
+        );
+    };
+
     return (
         <div className={classes.todoListWarp}>
             <ul>
@@ -42,6 +58,7 @@ const TodoList = () => {
                         isCompleted={listData.isCompleted}
                         userId={listData.userId}
                         onCheckbox={checkboxValueHandler}
+                        onUpdate={handleUpdate}
                     />
                 ))}
             </ul>
