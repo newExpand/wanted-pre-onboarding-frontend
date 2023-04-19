@@ -91,6 +91,21 @@
     outline: none;
 }
 
+.todoList a[data-testid="modify-button"] {
+    padding: 0.5rem 1rem;
+    background-color: #ddd;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    margin-left: 1rem;
+    text-shadow: 0.05rem 0.05rem 0.05rem rgba(0, 0, 0, 0.25);
+    color: #000;
+}
+
+.todoList a[data-testid="modify-button"]:hover {
+    background-color: #ccc;
+}
+
 .todoList button {
     padding: 0.5rem 1rem;
     background-color: #ddd;
@@ -99,13 +114,14 @@
     cursor: pointer;
     margin-left: 1rem;
     text-shadow: 0.05rem 0.05rem 0.05rem rgba(0, 0, 0, 0.25);
+    color: #000;
 }
 
 .todoList button:hover {
     background-color: #ccc;
 }
 
-.todoList a {
+.todoList a[data-testid="delete-button"] {
     padding: 0.5rem 1rem;
     background-color: #ab3c28;
     border: none;
@@ -114,6 +130,6 @@
     margin-left: 1rem;
 }
 
-.todoList a:hover {
+.todoList a[data-testid="delete-button"]:hover {
     background-color: #d03317;
 }

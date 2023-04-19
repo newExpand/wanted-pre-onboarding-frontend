@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Link, json, useNavigate, Form, redirect } from "react-router-dom";
+import { json, redirect, useNavigate } from "react-router-dom";
 import classes from "./TodoItem.module.css";
-import { getAuthToken } from "../util/auth";
 import axios from "axios";
+import { getAuthToken } from "../util/auth";
 
 interface TodoDataType {
     id: number;
@@ -13,8 +13,28 @@ interface TodoDataType {
 }
 
 const TodoItem = (props: TodoDataType) => {
+    const token = getAuthToken();
+    const navigate = useNavigate();
+    const [deleted, setDeleted] = useState(false);
     const [isChecked, setIsChecked] = useState(false);
     const [isShowPutMarkup, setIsShowPutMarkup] = useState(false);
+
+    const putDeleteHandler = async (type: string) => {
+        const response = await axios({
+            url: process.env.REACT_APP_TODO_API + `todos/${props.id}`,
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + token,
+            },
+            method: type,
+        });
+
+        if (response.status === 400 || response.status === 404)
+            throw json({ message: "요청에 실패하였습니다." }, { status: 400 });
+
+        setDeleted(true);
+        return redirect("/todo");
+    };
 
     const putMarkupHandler = (e: React.MouseEvent) => {
         const tartget = e.target as HTMLButtonElement;
@@ -22,6 +42,7 @@ const TodoItem = (props: TodoDataType) => {
         switch (tartget.dataset.testid) {
             case "cancel-button":
                 setIsShowPutMarkup(false);
+                navigate("/todo");
                 break;
             case "modify-button":
                 setIsShowPutMarkup(true);
@@ -39,6 +60,12 @@ const TodoItem = (props: TodoDataType) => {
         setIsChecked(checkboxIds.includes(props.id));
     }, [props.id]);
 
+    useEffect(() => {
+        setDeleted(false);
+    }, []);
+
+    if (deleted) return null;
+
     return (
         <>
             <li className={classes.todoList}>
@@ -48,24 +75,26 @@ const TodoItem = (props: TodoDataType) => {
                 </label>
                 {!isShowPutMarkup && (
                     <div className={classes.btnWrap}>
-                        <button type="button" data-testid="modify-button" onClick={putMarkupHandler}>
+                        <button data-testid="modify-button" onClick={putMarkupHandler}>
                             수정
                         </button>
-                        <Link to={`${props.id}`} data-testid="delete-button">
+                        <button data-testid="delete-button" onClick={putDeleteHandler.bind(null, "DELETE")}>
                             삭제
-                        </Link>
+                        </button>
                     </div>
                 )}
                 {isShowPutMarkup && (
-                    <Form method="put" className={`${classes.btnWrap} ${classes.putStaus}`}>
-                        <input data-testid="modify-input" defaultValue={props.todo} />
+                    <div className={`${classes.btnWrap} ${classes.putStaus}`}>
+                        <input data-testid="modify-input" name="putInput" defaultValue={props.todo} />
                         <div className={classes.btnWrap}>
-                            <button data-testid="submit-button">제출</button>
+                            <button data-testid="submit-button" onClick={putDeleteHandler.bind(null, "PUT")}>
+                                제출
+                            </button>
                             <button type="button" data-testid="cancel-button" onClick={putMarkupHandler}>
                                 취소
                             </button>
                         </div>
-                    </Form>
+                    </div>
                 )}
             </li>
         </>
@@ -73,21 +102,3 @@ const TodoItem = (props: TodoDataType) => {
 };
 
 export default TodoItem;
-
-export const loader = async ({ params }: { request: Request; params: any }) => {
-    const curTodoId = params.todoId;
-    const token = getAuthToken();
-
-    const response = await axios({
-        url: process.env.REACT_APP_TODO_API + `todos/${curTodoId}`,
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + token,
-        },
-        method: "DELETE",
-    });
-    if (response.status === 400 || response.status === 404)
-        throw json({ message: "요청에 실패하였습니다." }, { status: 400 });
-
-    return redirect("/todo");
-};

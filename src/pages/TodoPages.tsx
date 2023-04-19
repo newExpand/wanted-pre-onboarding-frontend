@@ -17,24 +17,26 @@ const TodoPages = () => {
 
 export default TodoPages;
 
-export const action = async ({ request }: { request: Request }) => {
+export const action = async ({ request, params }: { request: Request; params: any }) => {
     const data = await request.formData();
     const token = getAuthToken();
     const todoData = {
         todo: data.get("todo"),
     };
 
-    const response = await axios({
-        url: process.env.REACT_APP_TODO_API + "todos",
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + token,
-        },
-        method: request.method,
-        data: todoData,
-    });
-    if (response.status === 400 || response.status === 404)
-        throw json({ message: "요청에 실패하였습니다." }, { status: 400 });
+    if (request.method === "POST") {
+        const response = await axios({
+            url: process.env.REACT_APP_TODO_API + "todos",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + token,
+            },
+            method: request.method,
+            data: todoData,
+        });
+        if (response.status === 400 || response.status === 404)
+            throw json({ message: "요청에 실패하였습니다." }, { status: 400 });
 
-    return redirect("/todo");
+        return redirect("/todo");
+    }
 };
